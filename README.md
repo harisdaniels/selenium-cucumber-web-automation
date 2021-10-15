@@ -66,15 +66,15 @@ To illustrate how this works, look at the following Gherkin Scenario step defini
   import io.cucumber.java.en.When;
   import pages.LoginPage;
 
-  public class LoginSteps {	
+  public class LoginPageSteps {	
     private LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
 
-    @Given("User opens URL {string}")
+    @Given("Admin opens URL {string}")
     public void user_opens_url(String url) {
       DriverFactory.getDriver().get(url);	    
     }
 
-    @When("User enters Email as {string} and Password as {string}")
+    @When("Admin input Email as {string} and Password as {string}")
     public void user_enters_email_as_and_password_as(String email, String password) {
       loginPage.clearEmailField();
       loginPage.enterEmail(email);
@@ -83,8 +83,9 @@ To illustrate how this works, look at the following Gherkin Scenario step defini
       loginPage.enterPassword(password);
     }
 
-    @When("Clicks on Login button")
-    public void click_on_login_button() {
+    @And("Admin clicks Checkbox also clicks on Login button")
+    public void admin_clicks_checkbox_also_clicks_on_login_button() {
+      loginPage.clickRememberMeCheckBox();
       loginPage.clickLoginButton();
     }
 
@@ -93,7 +94,7 @@ To illustrate how this works, look at the following Gherkin Scenario step defini
       Assert.assertEquals(expectedTitle, DriverFactory.getDriver().getTitle());		
     }
 
-    @When("User clicks on Logout link")
+    @When("Admin clicks on Logout link")
     public void user_clicks_on_logout_link() {
       loginPage.clickLogoutLink();
     }
