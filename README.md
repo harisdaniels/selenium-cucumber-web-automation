@@ -62,46 +62,53 @@ To illustrate how this works, look at the following Gherkin Scenario step defini
   package stepdefinitions;
 
   import org.junit.Assert;
+  import org.openqa.selenium.By;
 
   import factory.DriverFactory;
+  import io.cucumber.java.en.And;
   import io.cucumber.java.en.Given;
   import io.cucumber.java.en.Then;
   import io.cucumber.java.en.When;
   import pages.LoginPage;
 
-  public class LoginPageSteps {	
-    private LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
+  public class LoginPageSteps {
+	
+	private LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
+	
+	@Given("Admin opens URL {string}")
+	public void admin_opens_url(String url) {
+	   DriverFactory.getDriver().get(url);
+	}
 
-    @Given("Admin opens URL {string}")
-    public void user_opens_url(String url) {
-      DriverFactory.getDriver().get(url);	    
-    }
-
-    @When("Admin input Email as {string} and Password as {string}")
-    public void user_enters_email_as_and_password_as(String email, String password) {
-      loginPage.clearEmailField();
-      loginPage.enterEmail(email);
+	@When("Admin inputs Email as {string} and Password as {string}")
+	public void admin_input_email_as_and_password_as(String email, String password) {
+	   loginPage.clearEmailField();
+	   loginPage.enterEmail(email);
 	    
-      loginPage.clearPasswordField();
-      loginPage.enterPassword(password);
-    }
+	   loginPage.clearPasswordField();
+	   loginPage.enterPassword(password);
+	}
 
-    @And("Admin clicks Checkbox also clicks on Login button")
-    public void admin_clicks_checkbox_also_clicks_on_login_button() {
-      loginPage.clickRememberMeCheckBox();
-      loginPage.clickLoginButton();
-    }
-
-    @Then("Page title should be {string}")
-    public void page_title_should_be(String expectedTitle) {	    
-      Assert.assertEquals(expectedTitle, DriverFactory.getDriver().getTitle());		
-    }
-
-    @When("Admin clicks on Logout link")
-    public void user_clicks_on_logout_link() {
-      loginPage.clickLogoutLink();
-    }
-  }
+	@And("Admin clicks Checkbox also clicks on Login button")
+	public void admin_clicks_checkbox_also_clicks_on_login_button() {
+	   loginPage.clickRememberMeCheckBox();
+	   loginPage.clickLoginButton();
+	}
+	
+	@Then("Page title should be {string}")
+	public void page_title_should_be(String expectedTitle) {
+	   Assert.assertEquals(expectedTitle, DriverFactory.getDriver().getTitle());
+	}
+	
+	@When("Admin clicks on Logout link")
+	public void admin_clicks_on_logout_link() {
+	   try {
+		Thread.sleep(3000);
+		loginPage.clickLogoutLink();
+	   } catch (InterruptedException e) {
+		e.printStackTrace();
+	   }
+	}
   ```
 - Use `TestRunner` class. To [run](https://support.smartbear.com/testleft/docs/bdd/tutorial/cucumber/get-stubs.html) your BDD test, you must use one of the available runners. In this tutorial, I will use JUnit, but you can use any other.
   - Create a new JUnit class And Add the following annotations to the class:
