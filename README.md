@@ -37,20 +37,23 @@ You can easily combine multiple languages support and other features into any of
 
 ## Test Structure
 - Use Gherkin syntax: a set of special [keywords](https://cucumber.io/docs/gherkin/reference/#keywords) to give structure and meaning to executable specifications.
-  Each keyword is translated to many spoken languages; in this reference we’ll use English.
+  Each keyword is translated to many spoken languages; in this reference I will use English.
   Either spaces or tabs may be used for indentation. The recommended indentation level is two spaces. Here is an example:
   
   ```
   Feature: Login page feature admin-demo.nopcommerce.com
 
-  Scenario: Successful Login with Valid Credentials
-    Given User opens URL "https://admin-demo.nopcommerce.com/login"
-    When User enters Email as "admin@yourstore.com" and Password as "admin"
-    And Clicks on Login button
+  Background: Steps to Login Page
+    Given Admin opens URL "https://admin-demo.nopcommerce.com/login"
+
+  Scenario: Successful Login Because Admin Inputs Valid Credentials (Positive)
+    When Admin inputs Email as "admin@yourstore.com" and Password as "admin"
+    And Admin clicks Checkbox also clicks on Login button
     Then Page title should be "Dashboard / nopCommerce administration"
-    When User clicks on Logout link
+    When Admin clicks on Logout link
     Then Page title should be "Your store. Login"
   ```
+  
 - Use Step Definition is a Java method with an [expression](https://cucumber.io/docs/cucumber/step-definitions/#expressions) that links it to one or more Gherkin steps. 
 When Cucumber executes a Gherkin step in a scenario, it will look for a matching step definition to execute.
 To illustrate how this works, look at the following Gherkin Scenario step definition:
@@ -100,7 +103,7 @@ To illustrate how this works, look at the following Gherkin Scenario step defini
     }
   }
   ```
-- Use `TestRunner` class. To [run](https://support.smartbear.com/testleft/docs/bdd/tutorial/cucumber/get-stubs.html) your BDD test, you must use one of the available runners. In this tutorial, we will use JUnit, but you can use any other.
+- Use `TestRunner` class. To [run](https://support.smartbear.com/testleft/docs/bdd/tutorial/cucumber/get-stubs.html) your BDD test, you must use one of the available runners. In this tutorial, I will use JUnit, but you can use any other.
   - Create a new JUnit class And Add the following annotations to the class:
   
   ```
@@ -143,6 +146,7 @@ After run the test, you can also see the result of the test by copy-paste the li
 ### Test Report Sample
 ![Screenshot_7](https://user-images.githubusercontent.com/74105380/130414584-7ef56858-697c-4537-966a-77c924eaaefc.jpg)
 The result will be like this.
+
 
 
 # All is Done!
