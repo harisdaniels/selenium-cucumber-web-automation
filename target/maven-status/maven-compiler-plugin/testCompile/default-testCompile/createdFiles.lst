@@ -1,0 +1,5 @@
+stepdefinitions\AddCustomerPageSteps.class
+stepdefinitions\SearchCustomerPageSteps.class
+TestRunners\TestRunner.class
+stepdefinitions\LoginPageSteps.class
+hooks\Hooks.class

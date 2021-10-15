@@ -1,0 +1,6 @@
+pages\AddCustomerPage.class
+pages\SearchCustomerPage.class
+utils\ConfigReader.class
+pages\LoginPage.class
+factory\DriverFactory.class
+utils\WaitHelper.class
