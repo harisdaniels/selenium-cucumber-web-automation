@@ -77,10 +77,10 @@ To illustrate how this works, look at the following Gherkin Scenario step defini
     @When("User enters Email as {string} and Password as {string}")
     public void user_enters_email_as_and_password_as(String email, String password) {
       loginPage.clearEmailField();
-	    loginPage.enterEmail(email);
+      loginPage.enterEmail(email);
 	    
-	    loginPage.clearPasswordField();
-	    loginPage.enterPassword(password);
+      loginPage.clearPasswordField();
+      loginPage.enterPassword(password);
     }
 
     @When("Clicks on Login button")
