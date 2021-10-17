@@ -110,7 +110,7 @@ To illustrate how this works, look at the following Gherkin Scenario step defini
 	   }
 	}
   ```
-- Use `TestRunner` class. To [run](https://support.smartbear.com/testleft/docs/bdd/tutorial/cucumber/get-stubs.html) your BDD test, you must use one of the available runners. In this tutorial, I will use JUnit, but you can use any other.
+- Use `TestRunner` class. To [run](https://support.smartbear.com/testleft/docs/bdd/tutorial/cucumber/get-stubs.html) your BDD test, you must use one of the available runners. In this project, I will use JUnit, but you can use any other.
   - Create a new JUnit class And Add the following annotations to the class:
   
   ```
